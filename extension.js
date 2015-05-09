@@ -1,119 +1,118 @@
-(function () {
-    //Link location of your fork so you don't have to modify so many things.
-    var fork = "Yemasthui";
-		
-    //Define our function responsible for extending the bot.
-    function extend() {
-        //If the bot hasn't been loaded properly, try again in 1 second(s).
-        if (!window.bot) {
-            return setTimeout(extend, 1 * 1000);
-        }
+(Function () {
+    // Link localização do seu garfo para que você não tem que modificar muitas coisas.
+    var fork = "Yemasthui";
 
-        //Precaution to make sure it is assigned properly.
-        var bot = window.bot;
+    // Definir a nossa função responsável para estender o bot.
+    função estender () {
+        // Se o bot não foi carregado corretamente, tente novamente em 1 segundo (s).
+        se (window.bot!) {
+            retornar setTimeout (estenda, 1 * 1000);
+        }
 
-        //Load custom settings set below
-        bot.retrieveSettings();
+        // Precaução para ter certeza que é atribuído corretamente.
+        var bot = window.bot;
 
-        /*
-         Extend the bot here, either by calling another function or here directly.
-         Model code for a bot command:
+        // Configurações de carga personalizados fixado abaixo
+        bot.retrieveSettings ();
 
-         bot.commands.commandCommand = {
-         command: 'cmd',
-         rank: 'user/bouncer/mod/manager',
-         type: 'startsWith/exact',
-         functionality: function(chat, cmd){
-         if(this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-         if( !bot.commands.executable(this.rank, chat) ) return void (0);
-         else{
-         //Commands functionality goes here.
-         }
-         }
-         }
+        / *
+         Estender o bot aqui, quer chamando outra função ou diretamente aqui.
+         Código de modelo para um comando bot:
 
-         */
+         bot.commands.commandCommand = {
+         comando: "cmd",
+         classificação: 'user / leão de chácara / mod / manager',
+         digite: 'startsWith / exato,
+         funcionalidade: function (bate-papo, cmd) {
+         if (! this.type === 'exata' && chat.message.length == cmd.length) vazio retorno (0);
+         if (! bot.commands.executable (this.rank, chat)) vazio retorno (0);
+         else {
+         // Funcionalidade Comandos vai aqui.
+         }
+         }
+         }
 
-        bot.commands.baconCommand = {
-            command: 'bacon',  //The command to be called. With the standard command literal this would be: !bacon
-            rank: 'user', //Minimum user permission to use the command
-            type: 'exact', //Specify if it can accept variables or not (if so, these have to be handled yourself through the chat.message
-            functionality: function (chat, cmd) {
-                if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                if (!bot.commands.executable(this.rank, chat)) return void (0);
-                else {
-                    API.sendChat("/me Bacon!!!");
-                }
-            }
-        };
+         * /
 
-        //Load the chat package again to account for any changes
-        bot.loadChat();
+        bot.commands.baconCommand = {
+            comando: 'Bacon', // O comando a ser chamado. Com o comando padrão literal isso seria: o bacon
+            classificação: 'usuário', // permissão mínima do usuário para usar o comando
+            Tipo: 'exata', // Especifique se pode aceitar variáveis ​​ou não (em caso afirmativo, estes têm de ser tratado a si mesmo através da chat.message
+            funcionalidade: function (bate-papo, cmd) {
+                if (! this.type === 'exata' && chat.message.length == cmd.length) vazio retorno (0);
+                if (! bot.commands.executable (this.rank, chat)) vazio retorno (0);
+                else {
+                    API.sendChat ("/ me Bacon !!!");
+                }
+            }
+        };
 
-    }
+        // Carrega o pacote de bate-papo novamente ter em conta quaisquer mudanças
+        bot.loadChat ();
 
-    //Change the bots default settings and make sure they are loaded on launch
+    }
 
-    localStorage.setItem("basicBotsettings", JSON.stringify({
-        botName: "basicBot",
-        language: "portuguese",
-        startupCap: 1, // 1-200
-        startupVolume: 0, // 0-100
-        startupEmoji: false, // true or false
-        cmdDeletion: true,
-        chatLink: "https://rawgit.com/TerrorMajin/basicBot/master/lang/en.json",
-        maximumAfk: 120,
-        afkRemoval: true,
-        maximumDc: 60,
-        bouncerPlus: true,
-        blacklistEnabled: true,
-        lockdownEnabled: false,
-        lockGuard: false,
-        maximumLocktime: 10,
-        cycleGuard: true,
-        maximumCycletime: 10,
-        voteSkip: false,
-        voteSkipLimit: 10,
-        timeGuard: true,
-        maximumSongLength: 10,
-        autodisable: true,
-        commandCooldown: 30,
-        usercommandsEnabled: true,
-        lockskipPosition: 3,
-        lockskipReasons: [
-            ["theme", "This song does not fit the room theme. "],
-            ["op", "This song is on the OP list. "],
-            ["history", "This song is in the history. "],
-            ["mix", "You played a mix, which is against the rules. "],
-            ["sound", "The song you played had bad sound quality or no sound. "],
-            ["nsfw", "The song you contained was NSFW (image or sound). "],
-            ["unavailable", "The song you played was not available for some users. "]
-        ],
-        afkpositionCheck: 15,
-        afkRankCheck: "ambassador",
-        motdEnabled: false,
-        motdInterval: 5,
-        motd: "Temporary Message of the Day",
-        filterChat: true,
-        etaRestriction: false,
-        welcome: true,
-        opLink: null,
-        rulesLink: null,
-        themeLink: null,
-        fbLink: null,
-        youtubeLink: null,
-        website: null,
-        intervalMessages: [],
-        messageInterval: 5,
-        songstats: true,
-        commandLiteral: "!",
-        blacklists: {
-            NSFW: "https://rawgit.com/" + fork + "/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
-            OP: "https://rawgit.com/" + fork + "/basicBot-customization/master/blacklists/ExampleOPlist.json"
-        }
-    }));
+    // Altere as configurações bots padrão e verifique se eles são carregados na inicialização
 
-    //Start the bot and extend it when it has loaded.
-    $.getScript("https://rawgit.com/Yemasthui/basicBot/master/basicBot.js", extend);
+    localStorage.setItem ("basicBotsettings", JSON.stringify ({
+        botname: "basicBot",
+        idioma: "português",
+        startupCap: 1, // 1-200
+        startupVolume: 0, // 0-100
+        startupEmoji: false, // verdadeiro ou falso
+        cmdDeletion: true,
+        chatLink: "https://rawgit.com/TerrorMajin/basicBot/master/lang/en.json",
+        maximumAfk: 120,
+        afkRemoval: true,
+        maximumDc: 60,
+        bouncerPlus: true,
+        blacklistEnabled: true,
+        lockdownEnabled: false,
+        LockGuard: false,
+        maximumLocktime: 10,
+        CycleGuard: true,
+        maximumCycletime: 10,
+        voteSkip: false,
+        voteSkipLimit: 10,
+        TIMEGUARD: true,
+        maximumSongLength: 10,
+        autodisable: true,
+        commandCooldown: 30,
+        usercommandsEnabled: true,
+        lockskipPosition: 3,
+        lockskipReasons: [
+            ["Tema", "Essa música não se encaixa no tema do quarto."],
+            ["Op", "Esta canção está na lista de OP."],
+            ["História", "Essa música é na história."],
+            ["Misturar", "Você jogou um mix, que é contra as regras."],
+            ["Som", "A canção que você jogou teve má qualidade do som ou nenhum som."],
+            ["NSFW", "A música que continha era NSFW (imagem ou som)."],
+            ["Indisponível", "A canção que você jogou não estava disponível para alguns usuários."]
+        ],
+        afkpositionCheck: 15,
+        afkRankCheck: "embaixador",
+        motdEnabled: false,
+        motdInterval: 5,
+        motd: "Mensagem Temporária do Dia",
+        filterChat: true,
+        etaRestriction: false,
+        boas-vindas: true,
+        Oplink: null,
+        rulesLink: null,
+        themeLink: null,
+        fbLink: null,
+        youtubeLink: null,
+        site: nulo,
+        intervalMessages: [],
+        messageInterval: 5,
+        songstats: verdadeiro,
+        commandLiteral: "!",
+        blacklists: {
+            NSFW: "https://rawgit.com/" fork "/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
+            OP: "https://rawgit.com/" fork "/basicBot-customization/master/blacklists/ExampleOPlist.json"
+        }
+    }));
 
-}).call(this);
+    // Iniciar o bot e estendê-lo quando ele foi carregado.
+    $ .getScript ("Https://rawgit.com/Yemasthui/basicBot/master/basicBot.js", prolongar);
+
