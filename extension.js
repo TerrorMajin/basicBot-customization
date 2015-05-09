@@ -1,118 +1,145 @@
-(Function () {
-    // Link localização do seu garfo para que você não tem que modificar muitas coisas.
-    var fork = "Yemasthui";
+{
 
-    // Definir a nossa função responsável para estender o bot.
-    função estender () {
-        // Se o bot não foi carregado corretamente, tente novamente em 1 segundo (s).
-        se (window.bot!) {
-            retornar setTimeout (estenda, 1 * 1000);
-        }
+    "nodatafound": "Dados anteriores não encontrados nesse karaio.",
+    "retrievingdata": "Recuperando dados anteriores.",
+    "datarestored": "Dados anteriores recuperados com sucesso <3 .",
+    "greyuser": "Somente seguranças ou mais podem abrir o bot, seu lixo.",
+    "bouncer": "Ih ala, o bot não pode mover se estiver usando como segurança.",
+    "online": "/me %%BOTNAME%% v%%VERSION%% CHEGOU NESSA KARAIA!",
 
-        // Precaução para ter certeza que é atribuído corretamente.
-        var bot = window.bot;
 
-        // Configurações de carga personalizados fixado abaixo
-        bot.retrieveSettings ();
+    "welcome": "/me Seja welcomido(a) @%%NAME%% amorzinho <3",
+    "welcomeback": "/me Seje welcomido(a) de volta :blue_heart: , @%%NAME%%",
+    "songknown": "/me @%%NAME%%, essa música está no historico de Dj's.",
+    "timelimit": "/me @%%NAME%%, essa merda de video é maior que %%MAXLENGTH%% minutos carai, você não pode rodar coisas longas assim (Mesmo sendo delicia).",
+    "permissionownsong": "/me :up: @%%NAME%% tem permissão para rodar a merdinha dele!",
+    "isblacklisted": "/me Essa bosta está na %%BLACKLIST%% lista negra! Pulando...",
 
-        / *
-         Estender o bot aqui, quer chamando outra função ou diretamente aqui.
-         Código de modelo para um comando bot:
 
-         bot.commands.commandCommand = {
-         comando: "cmd",
-         classificação: 'user / leão de chácara / mod / manager',
-         digite: 'startsWith / exato,
-         funcionalidade: function (bate-papo, cmd) {
-         if (! this.type === 'exata' && chat.message.length == cmd.length) vazio retorno (0);
-         if (! bot.commands.executable (this.rank, chat)) vazio retorno (0);
-         else {
-         // Funcionalidade Comandos vai aqui.
-         }
-         }
-         }
+    "isopen": "/me ROOOODA ROOOODAM COMEÇOU! Digite !join para participaaar!",
+    "winnerpicked": "/me Um viadão foi escolhido, todos olharão sua bundinha peludinha! @%%NAME%% para a posição %%POSITION%%.",
 
-         * /
 
-        bot.commands.baconCommand = {
-            comando: 'Bacon', // O comando a ser chamado. Com o comando padrão literal isso seria: o bacon
-            classificação: 'usuário', // permissão mínima do usuário para usar o comando
-            Tipo: 'exata', // Especifique se pode aceitar variáveis ​​ou não (em caso afirmativo, estes têm de ser tratado a si mesmo através da chat.message
-            funcionalidade: function (bate-papo, cmd) {
-                if (! this.type === 'exata' && chat.message.length == cmd.length) vazio retorno (0);
-                if (! bot.commands.executable (this.rank, chat)) vazio retorno (0);
-                else {
-                    API.sendChat ("/ me Bacon !!!");
-                }
-            }
-        };
+    "alreadyadding": "/me Já está sendo adicionado! Mudando para a posição %%POSITION%%.",
+    "adding": "/me Adicionando @%%NAME%% a lista de dj. Posição atual: %%POSITION%%.",
 
-        // Carrega o pacote de bate-papo novamente ter em conta quaisquer mudanças
-        bot.loadChat ();
 
-    }
+    "usernotfound": "/me Viadão não encontrado.",
+    "notdisconnected": "/me @%%NAME%% não desconectou enquanto estive dando o cu aqui.",
+    "noposition": "/me Ultima posição desconhecida. A lista de espera precisa ser atualizada pelo menos uma vez para gravar posições.",
+    "toolongago": "/me o viadão @%%NAME%% foi dar o cu a muito tempo atrás, se fuder: %%TIME%%.",
+    "valid": "/me @%%NAME%% foi dar o cu há %%TIME%% e deve ter a posição %%POSITION%%.",
 
-    // Altere as configurações bots padrão e verifique se eles são carregados na inicialização
 
-    localStorage.setItem ("basicBotsettings", JSON.stringify ({
-        botname: "basicBot",
-        idioma: "português",
-        startupCap: 1, // 1-200
-        startupVolume: 0, // 0-100
-        startupEmoji: false, // verdadeiro ou falso
-        cmdDeletion: true,
-        chatLink: "https://rawgit.com/TerrorMajin/basicBot/master/lang/en.json",
-        maximumAfk: 120,
-        afkRemoval: true,
-        maximumDc: 60,
-        bouncerPlus: true,
-        blacklistEnabled: true,
-        lockdownEnabled: false,
-        LockGuard: false,
-        maximumLocktime: 10,
-        CycleGuard: true,
-        maximumCycletime: 10,
-        voteSkip: false,
-        voteSkipLimit: 10,
-        TIMEGUARD: true,
-        maximumSongLength: 10,
-        autodisable: true,
-        commandCooldown: 30,
-        usercommandsEnabled: true,
-        lockskipPosition: 3,
-        lockskipReasons: [
-            ["Tema", "Essa música não se encaixa no tema do quarto."],
-            ["Op", "Esta canção está na lista de OP."],
-            ["História", "Essa música é na história."],
-            ["Misturar", "Você jogou um mix, que é contra as regras."],
-            ["Som", "A canção que você jogou teve má qualidade do som ou nenhum som."],
-            ["NSFW", "A música que continha era NSFW (imagem ou som)."],
-            ["Indisponível", "A canção que você jogou não estava disponível para alguns usuários."]
-        ],
-        afkpositionCheck: 15,
-        afkRankCheck: "embaixador",
-        motdEnabled: false,
-        motdInterval: 5,
-        motd: "Mensagem Temporária do Dia",
-        filterChat: true,
-        etaRestriction: false,
-        boas-vindas: true,
-        Oplink: null,
-        rulesLink: null,
-        themeLink: null,
-        fbLink: null,
-        youtubeLink: null,
-        site: nulo,
-        intervalMessages: [],
-        messageInterval: 5,
-        songstats: verdadeiro,
-        commandLiteral: "!",
-        blacklists: {
-            NSFW: "https://rawgit.com/" fork "/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
-            OP: "https://rawgit.com/" fork "/basicBot-customization/master/blacklists/ExampleOPlist.json"
-        }
-    }));
+    "warning1": "/me @%%NAME%%, você esteve dando a bunda por muito tempo %%TIME%%, responda em 2 minutos ou será removido da fila seu cuzão <3 .",
+    "warning2": "/me @%%NAME%%, você será removido por ficar afk por muito tempo.",
+    "afkremove": "/me @%%NAME%%, você foi removido por estar afk por %%TIME%%. Você estava em %%POSITION%%. Digite pelo menos uma coisa em %%MAXIMUMAFK%% minutos se você quiser rodar algo.",
 
-    // Iniciar o bot e estendê-lo quando ele foi carregado.
-    $ .getScript ("Https://rawgit.com/Yemasthui/basicBot/master/basicBot.js", prolongar);
 
+    "caps": "/me @%%NAME%%, DESGRUDA DO CAPS FILHO DA PUTA SEM COSTUMES :blue_heart: .",
+    "askskip": "/me @%%NAME%%, PARA DE PEDIR PARA PULAR FILHO DA PUTA.",
+    "spam": "/me @%%NAME%%, não faça spam filho da mãe.",
+    "roomadvertising": "/me @%%NAME%%, não poste links de outras salas FILHO DA PUTA.",
+    "adfly": "/me @%%NAME%%, mude de autowoot, use o Origem Woot: http://goo.gl/iubHkn",
+
+
+    "invalidtime": "/me [@%%NAME%%] Tempo invalido.",
+    "nouserspecified": "/me [@%%NAME%%] Usuario não expecificado.",
+    "invaliduserspecified": "/me [@%%NAME%%] Usuario expecificado invalido.",
+    "nolistspecified": "/me [@%%NAME%%] Sem lista expecificada.",
+    "invalidlistspecified": "/me [@%%NAME%%] Lista invalida expecificada.",
+    "novaliduserspecified": "/me [@%%NAME%%] Usuario invalido expecificado.",
+    "nolimitspecified": "/me [@%%NAME%%] Sem limite de tempo expecificado.",
+    "invalidlimitspecified": "/me [@%%NAME%%] Tempo invalido.",
+    "invalidpositionspecified": "/me [@%%NAME%%] Posição invalida expecificada.",
+    "toggleon": "/me [@%%NAME%%] %%FUNCTION%% ativada nessa delicia.",
+    "toggleoff": "/me [@%%NAME%%] %%FUNCTION%% desativada nessa delicia.",
+    "afkremoval": "AFK'S sendo removidos <3 ",
+    "afksremoved": "AFK's removidos :blue_heart:",
+    "afklimit": "AFK limite",
+    "autodisable": "autodesativar",
+    "autoskip": "autopular",
+    "newblacklisted": "/me [@%%NAME%%] Está música agora pertence a %%BLACKLIST%% lista negra! [ %%AUTHOR%% - %%TITLE%% - %%MID%% ]",
+    "blinfo": "[@%%NAME%%] Informação da lista negra - Autor: %%AUTHOR%%, Nome: %%TITLE%%, ID: %%SONGID%%",
+    "blacklist": "ListaNegra",
+    "cycleguard": "cycleguard",
+    "timeguard": "timeguard",
+    "chatfilter": "FiltrodeChat",
+    "historyskip": "Pular repetidas",
+    "lockdown": "lockdown",
+    "lockguard": "lockguard",
+    "usercommands": "usercommands",
+    "motd": "MotD",
+    "welcomemsg": "welcome message",
+    "songstats": "song statistics",
+    "etarestriction": "eta restriction",
+    "voteskip": "voteskip",
+    "voteskiplimit": "/me [@%%NAME%%] Limite de meh's para pular foi expecificado para %%LIMIT%%.",
+    "voteskipexceededlimit": "/me @%%NAME%%, seu video excede o limite de meh's para pular (%%LIMIT%% mehs).",
+    "voteskipinvalidlimit": "/me [@%%NAME%%] Limite de meh's para pular invalido.",
+    "voteskipsetlimit": "/me [@%%NAME%%] Limite de meh's para pular expecificado para %%LIMIT%%.",
+    "activeusersintime": "/me [@%%NAME%% Aqui teve %%AMOUNT%% delicias digitando nos ultimos %%TIME%% minutos.",
+    "maximumafktimeset": "/me [@%%NAME%%] Duração maxima para afk expecificada para %%TIME%% minutos.",
+    "afkstatusreset": "/me [@%%NAME%%] Status de afk resetados do @%%USERNAME%%.",
+    "inactivefor": "/me [@%%NAME%%] @%%USERNAME%% Si fude, você esteve dando a bunda por %%TIME%%.",
+    "autowoot": "/me Nos recomendamos o AutoWoot mais delicinha do Brasil e do Plug, o Origem Woot http://origem-woot.com/",
+    "brandambassador": "/me O Embaixador da Marca é a voz do Ban no Plug DJ. Eles fazem eventos, zoam nas comunidades e espalham ban ao redor do mundo. Para mais informações acesse: https://plug.dj/ba",
+    "bouncerplusrank": "/me [@%%NAME%%] You have to be manager or up to enable Bouncer+.",
+    "chatcleared": "/me [@%%NAME%%] Limpou o chat com o cu.",
+    "deletechat": "/me [@%%NAME%%] Limpou o chat de %%USERNAME%% com a bunda.",
+    "commandslink": "/me %%BOTNAME%% comandos: %%LINK%%",
+    "eatcookie": "/me come umas pirokas pela bunda.",
+    "nousercookie": "/em Não vejo um viadão chamado %%NAME%% na sala, vou comer essa piroka só.",
+    "selfcookie": "/me @%%NAME%%, Você é murrinha heim, divide com os outros filho da puta",
+    "cookie": "/me @%%NAMETO%%, @%%NAMEFROM%% %%COOKIE%%",
+    "cycleguardtime": "/me [@%%NAME%%] The cycleguard is set to %%TIME%% minute(s).",
+    "dclookuprank": "/me [@%%NAME%%] Somente seguranças para cima podem dar DC Look Up em outros usuarios.",
+    "emojilist": "/me Emoji list: %%LINK%%",
+    "notinwaitlist": "/me @%%NAME%%, Você não está na lista de espera.",
+    "eta": "/me @%%NAME%% todos observarão sua bundinha peludinha em %%TIME%%.",
+    "facebook": "/me DÁ UM LAIKE PRA NOIXX NO FAICE PARÇA: %%LINK%%",
+    "starterhelp": "/me Essa imagem em gringuês irá te ajudar a usar o Plugme DeJota: %%LINK%%",
+    "roulettejoin": "/me @%%NAME%% ENTROU NA ROLETA, se prepare filho da mãe! (!leave se você quiser arregar.)",
+    "jointime": "/me [@%%NAMEFROM%%] @%%USERNAME%% Esteve nessa sala por %%TIME%%.",
+    "kickrank": "/me [@%%NAME%%] Você não pode kickar usuarios com mesmo cargo, ou cargo superior que você filho da puta!",
+    "kick": "/me [@%%NAME%%], @%%USERNAME%% you are being kicked from the community for %%TIME%% minutes.",
+    "kill": "/me Desligando para dar o cu <3 .",
+    "rouletteleave": "/me @%%NAME%% Arregou da roleta!",
+    "songlink": "/me [@%%NAME%%] Link para o lixo atual <3: %%LINK%%",
+    "usedlockskip": "/me [%%NAME%% usou lockskip, é super efetivo no pokemon tipo: Viadão.]",
+    "lockskippos": "/me [@%%NAME%%] Lockskip agora irá mover as pessoas para a posição %%POSITION%%.",
+    "lockguardtime": "/me [@%%NAME%%] O lockguard irá te proteger em %%TIME%% minuto(s).",
+    "maxlengthtime": "/me [@%%NAME%%] A duração maxima para alguma merda aqui é de %%TIME%% minutos.",
+    "motdset": "/me MotD set to:  %%MSG%%",
+    "motdintervalset": "/me MotD interval set to %%INTERVAL%%.",
+    "addbotwaitlist": "/me @%%NAME%%, não tente me adicionar a fila, FILHO DA PUTA.",
+    "move": "/me [%%NAME%% usou mover, é super efetivo no Pokemon tipo: Falho.]",
+    "mutednotime": "/me [@%%NAME%%] Calou @%%USERNAME%%.",
+    "mutedmaxtime": "/me [@%%NAME%%] Você só por calar por até %%TIME%% minutos.",
+    "mutedtime": "/me [@%%NAME%%] Calou @%%USERNAME%% por %%TIME%% minutos.",
+    "unmuted": "/me [@%%NAME%%] Desilenciou @%%USERNAME%%.",
+    "muterank": "/me [@%%NAME%%] Você não pode calar pessoas com o mesmo cargo, ou superior que você, SEU MERDA.",
+    "oplist": "/me OP list: %%LINK%%",
+    "pong": "/me Pong NO TEU CU FILHO DA PUTA! :blue_heart: :blue_heart:",
+    "reload": "/me Vou dar o cu numa rapidinha ali e já volto.",
+    "removenotinwl": "/me [@%%NAME%%] O usuario @%%USERNAME%% não está na fila de espera.",
+    "roomrules": "/me Encontre as regras da sala aqui <3 : http://goo.gl/6RP5x1",
+    "sessionstats": "/me [@%%NAME%%] Total de woots: %%WOOTS%%, total de meh's: %%MEHS%%, total de grabs: %%GRABS%%.",
+    "skip": "/me [%%NAME%% usou pular, é super efetivo no pokemon tipo: Merda.]",
+    "madeby": "/me Esse bot foi feito por %%NAME%%, e editado por Big Boss delicia <3 .",
+    "activefor": "Eu estive sem dar o cu por %%TIME%%.",
+    "swapinvalid": "/me [@%%NAME%%] Viadão invalido. (Nome sem espaços porra!)",
+    "swapwlonly": "/me [@%%NAME%%] Somente troque pessoas que estão na fila!",
+    "swapping": "/me Trocando (rçrçrçrçrç) %%NAME1%% com %%NAME2%%.",
+    "genres": "/me Encontre os generos da sala aqui: %%LINK%%",
+    "notbanned": "/me [@%%NAME%%]  Esse zé bostola não foi banido.",
+    "unmutedeveryone": "/me [@%%NAME%%] Desilenciando todo mundo.",
+    "unmuteeveryonerank": "/me [@%%NAME%%] Somente coordenadores ou mais podem silenciar todo mundo.",
+    "notmuted": "/me [@%%NAME%%] Esse merda não estava calado.",
+    "unmuterank": "/me [@%%NAME%%] Você não pode calar pessoas com o mesmo cargo, ou superior que você, seu merda.",
+    "commandscd": "/me [@%%NAME%%] O tempo de espera para os comandos agora é de %%TIME%% segundos.",
+    "voteratio": "/me [@%%NAME%%] @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w/m): %%RATIO%%.",
+    "website": "/me Please visit our website: %%LINK%%",
+    "youtube": "/me [%%NAME%%] Subscribe to us on youtube: %%LINK%%",
+    "songstatistics": "/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W/%%GRABS%%G/%%MEHS%%M."
+}
